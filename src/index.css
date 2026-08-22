@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-surface: #11131b;
+    --color-primary: #2563eb;
+    --color-on-surface: #e1e2ed;
+  }
+  
+  body {
+    background-color: #0B0F19;
+    color: #e1e2ed;
+    font-family: 'Geist', sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Sora', sans-serif;
+  }
+}
+
+/* Glassmorphic & Bento Components */
+.bento-card {
+  background-color: #1E293B;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bento-card:hover {
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 8px 30px rgba(0, 0, 0, 0.4);
+}
+
+.glass-panel {
+  background-color: rgba(29, 31, 39, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mesh-bg {
+  background: 
+    radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(180, 197, 255, 0.06) 0%, transparent 40%),
+    #0B0F19;
+}
+
+.electric-glow {
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.35);
+}
+
+.electric-glow:hover {
+  box-shadow: 0 0 30px rgba(37, 99, 235, 0.55);
+}
+
+.glow-text {
+  text-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+}
+
+/* Social Proof Continuous Marquee Ticker */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.slider {
+  background: transparent;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.slider::before,
+.slider::after {
+  background: linear-gradient(to right, #0B0F19 0%, rgba(11, 15, 25, 0) 100%);
+  content: "";
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 160px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.slider::after {
+  right: 0;
+  transform: rotateZ(180deg);
+}
+
+.slider::before {
+  left: 0;
+}
+
+.slider .slide-track {
+  animation: scroll 35s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.slider:hover .slide-track {
+  animation-play-state: paused;
+}
+
+/* Primary Button Lift */
+.btn-primary {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.5);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Sparkline Animation */
+@keyframes sparkline-draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.sparkline path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: sparkline-draw 2s ease-out forwards;
+}
+
+/* 3D Perspective Card */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0B0F19;
+}
+::-webkit-scrollbar-thumb {
+  background: #282a32;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f465c;
+}
